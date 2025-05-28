@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>oracleaq Archives - JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</title>
+	<atom:link href="https://javapan.com/tag/oracleaq/feed/" rel="self" type="application/rss+xml" />
+	<link>https://javapan.com/tag/oracleaq/</link>
+	<description>Solving Technology Challenges</description>
+	<lastBuildDate>Sat, 10 Feb 2024 16:31:34 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.6.2</generator>
+	<item>
+		<title>How to read Oracle AQ using Camel Route and Save it to a Data Source ?</title>
+		<link>https://javapan.com/how-to-read-oracle-aq-using-camel-route-and-save-it-to-a-data-source/</link>
+					<comments>https://javapan.com/how-to-read-oracle-aq-using-camel-route-and-save-it-to-a-data-source/#respond</comments>
+		
+		<dc:creator><![CDATA[Bishow Pandey]]></dc:creator>
+		<pubDate>Thu, 15 Jun 2023 14:12:44 +0000</pubDate>
+				<category><![CDATA[data source]]></category>
+		<category><![CDATA[oracle]]></category>
+		<category><![CDATA[oracleaq]]></category>
+		<guid isPermaLink="false">https://javapan.com/?p=121</guid>
+
+					<description><![CDATA[<p>Oracle AQ (Advanced Queuing) is a feature of the Oracle Database that provides a messaging infrastructure for building distributed applications. It allows applications to communicate and exchange messages asynchronously in a reliable and transactional manner. Oracle AQ is based on the message queuing paradigm, where messages are sent from a sender application to a queue [&#8230;]</p>
+<p>The post <a href="https://javapan.com/how-to-read-oracle-aq-using-camel-route-and-save-it-to-a-data-source/">How to read Oracle AQ using Camel Route and Save it to a Data Source ?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p><strong>Oracle AQ</strong> (Advanced Queuing) is a feature of the Oracle Database that provides a messaging infrastructure for building distributed applications. It allows applications to communicate and exchange messages asynchronously in a reliable and transactional manner.</p>
+
+
+
+<p>Oracle AQ is based on the message queuing paradigm, where messages are sent from a sender application to a queue and then retrieved and processed by a receiver application. The sender and receiver applications can be running on the same or different systems, allowing for distributed communication.</p>
+
+
+
+<p>Key features of Oracle AQ include:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Asynchronous Messaging: Oracle AQ enables asynchronous communication between applications, where the sender and receiver do not need to be active at the same time. This decoupling of sender and receiver allows for greater flexibility and scalability in application design.</li>
+
+
+
+<li>Reliable Message Delivery: Oracle AQ ensures reliable delivery of messages by providing built-in persistence, transactional support, and message buffering. It maintains a copy of each message until it is successfully consumed by the receiver, ensuring message integrity and fault tolerance.</li>
+
+
+
+<li>Message Priority: Messages in Oracle AQ can be assigned different priorities, allowing critical messages to be processed before less important ones. This feature enables the application to handle high-priority messages first, ensuring timely processing of important information.</li>
+
+
+
+<li>Message Filtering: Oracle AQ supports message filtering based on user-defined criteria. This allows receivers to selectively consume only messages that meet specific conditions, improving the efficiency of message processing.</li>
+
+
+
+<li>Publish-Subscribe Model: Oracle AQ also supports a publish-subscribe messaging model, where publishers can broadcast messages to multiple subscribers. This enables broadcasting information to multiple recipients efficiently.</li>
+</ol>
+
+
+
+<p>Oracle AQ is typically used in enterprise applications that require reliable and scalable messaging, such as order processing systems, financial applications, and distributed data integration scenarios. It provides a robust messaging infrastructure that helps build decoupled, scalable, and fault-tolerant systems.</p>
+
+
+
+<p></p>
+
+
+
+<p><strong>Camel Routes </strong>refer to the routing configurations in Apache Camel, an open-source integration framework that facilitates the integration of various systems, applications, and protocols. A Camel Route defines the path that a message takes from a source (input) to a destination (output) through a series of processing steps.</p>
+
+
+
+<p>In Camel, a Route is created by combining a set of message-processing components and defining the flow of the message through these components. The route configuration specifies how the message is received, transformed, filtered, and delivered to the desired endpoint.</p>
+
+
+
+<p>Here are the key components and concepts associated with Camel Routes:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Route Builder: A Route Builder is a class or configuration file where Camel routes are defined. It provides a domain-specific language (DSL) to define the route configurations and their processing steps.</li>
+
+
+
+<li>Message Sources: A route typically starts with a message source, also known as an input or consumer. It could be a file system directory, a JMS queue, an HTTP endpoint, a timer, or any other component that can receive messages.</li>
+
+
+
+<li>Message Processors: Message processors are components that perform various operations on the message during its journey through the route. They can transform the message, filter it based on conditions, aggregate multiple messages, invoke external services, or apply any custom logic.</li>
+
+
+
+<li>Routing Rules: Routing rules define how the message is directed from one component to another based on certain conditions or criteria. These rules determine the flow of the message within the route and are often based on content-based routing, header values, or dynamic decisions.</li>
+
+
+
+<li>Message Endpoints: A message endpoint represents the destination or output of a route. It could be a file system directory, a database, an email server, an external service, or any other component that can receive or process the message.</li>
+
+
+
+<li>Error Handling: Camel provides robust error handling capabilities within routes. It allows defining error handlers to catch and handle exceptions, define retry mechanisms, and control the flow in case of failures or exceptions during message processing.</li>
+</ol>
+
+
+
+<p>Camel Routes can be defined using various formats, including Java DSL, XML configuration, or Spring DSL, depending on the preference and requirements of the project.</p>
+
+
+
+<p>Overall, Camel Routes provide a flexible and powerful way to define and orchestrate message-based integration flows, enabling seamless communication and interaction between different systems and components.</p>
+
+
+
+<p><strong>How do we start when there is a need to handle a legacy system with a newer technology </strong>?<br>This high level code example includes how to connect to Oracle Advanced Queue from a target Database, read the message from the AQ and then using camel routes perform the business logic on method level.<br>Note : Make sure to add correct class and dependency via mvn repository or your defined repo. Some example of imports below:</p>
+
+
+
+<pre class="wp-block-code has-base-color has-contrast-background-color has-text-color has-background"><code lang="java" class="language-java">import org.apache.camel.component.jms.JmsComponent;
+import org.apache.camel.component.jms.JmsConfiguration;
+import oracle.jms.AQjmsFactory;
+import oracle.jdbc.pool.OracleDataSource;
+import org.apache.camel.LoggingLevel;
+import org.apache.camel.TypeConversionException;
+import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.component.bean.validator.BeanValidationException;
+First step where we will setup the connection factory and JmsConfiguration:
+@Configuration
+@EnableJms
+@EnableConfigurationProperties(AqOracleDataSourceProperties.class)
+@Profile("dev")
+public class OracleAdvancedQueueConfig {
+    private static final String JMS_CLIENT_ACKNOWLEDGEMENT_MODE = "CLIENT_ACKNOWLEDGE";
+	//This should be the connection properties of the database that you are 
+          reading from. 
+    @Autowired
+    private AqOracleDataSourceProperties aqOracleDataSourceProperties;
+	//Using AQjmsFactory for Oracle Advanced Query aka AQ to create a 
+          connection factory
+    @Bean
+    public QueueConnectionFactory connectionFactoryOracleAQQueue() throws JMSException, SQLException {
+        return AQjmsFactory.getQueueConnectionFactory(oracleAqDataSource());
+    }
+	//Now creating Jms Configuration
+    @Bean
+    public JmsConfiguration oracleAqJmsConfiguration() throws Exception {
+        JmsConfiguration jmsConfiguration = new JmsConfiguration();
+        jmsConfiguration.setConnectionFactory(connectionFactoryOracleAQQueue());
+        jmsConfiguration.setAcceptMessagesWhileStopping(true);
+        jmsConfiguration.setFormatDateHeadersToIso8601(true);
+        return jmsConfiguration;
+    }
+	//Now creating the Jms Component specific to camel Routes. Make sure the 
+         method name matches with     the one you have in the properties,yaml etc.
+    @Bean
+    public JmsComponent oracleJmsAq() throws Exception {
+        JmsComponent jmsComponent = new JmsComponent();
+        jmsComponent.setConfiguration(oracleAqJmsConfiguration());
+        return jmsComponent;
+    }
+    
+    private DataSource oracleAqDataSource() throws SQLException {
+        OracleDataSource oracleDataSource = new OracleDataSource();
+        oracleDataSource.setUser(aqOracleDataSourceProperties.getUsername());
+        oracleDataSource.setPassword(aqOracleDataSourceProperties.getPassword());
+        oracleDataSource.setURL(aqOracleDataSourceProperties.getUrl());
+        oracleDataSource.setImplicitCachingEnabled(true);
+        oracleDataSource.setFastConnectionFailoverEnabled(true);
+        return oracleDataSource;
+    }
+// Second step should be Camel Routes setup
+**Make sure to get the dependency first**
+**Make sure the method name at JmsComponent matches with the route jms component**
+@Component
+@Profile("dev")
+public class YourRoute extends RouteBuilder {
+    @SuppressWarnings("unchecked")
+    @Override
+    public void configure() throws Exception {
+	//Use your logic here to catch any exception
+        onException(UncategorizedSQLException.class)
+                .maximumRedeliveries(0)
+                .handled(false)
+                .useOriginalMessage()
+                .log(LoggingLevel.WARN, logger, "Unable to save message: " + 
+                BODY_AND_STACKTRACE);
+        onException(IOException.class, Exception.class)
+                .handled(false)
+                .useOriginalMessage()
+                .logHandled(true)
+                .getRedeliveryPolicy()
+                .logRetryStackTrace(true)
+                .retryAttemptedLogLevel(LoggingLevel.WARN) // generate email
+                .retriesExhaustedLogLevel(LoggingLevel.WARN) // generate email
+                .allowRedeliveryWhileStopping(false)
+                .maximumRedeliveries(180)
+                .redeliveryDelay(100)
+                .maximumRedeliveryDelay(10000)
+                .useExponentialBackOff();
+	//Make sure to have these properties in yaml or some other class based on your needs.
+        from("{{app.some-camel-component}}{{app.oracle-aq-endpoint.name}}")
+                .routeId(ROUTE_ID + "Dev")
+                .to(METHOD_WHERE_WE_WILL_SAVE_THE_MESSAGE);
+        
+        from(METHOD_WHERE_WE_WILL_SAVE_THE_MESSAGE)
+                .routeId(ROUTE_ID)
+                .bean(someServiceClassNameWhereYourMethodLives, "saveToDatabaseMethod(${body}, ${header.JMSTimestamp})");
+    }
+}</code></pre>
+<p><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fjavapan.com%2Fhow-to-read-oracle-aq-using-camel-route-and-save-it-to-a-data-source%2F&amp;linkname=How%20to%20read%20Oracle%20AQ%20using%20Camel%20Route%20and%20Save%20it%20to%20a%20Data%20Source%20%3F" title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share#url=https%3A%2F%2Fjavapan.com%2Fhow-to-read-oracle-aq-using-camel-route-and-save-it-to-a-data-source%2F&#038;title=How%20to%20read%20Oracle%20AQ%20using%20Camel%20Route%20and%20Save%20it%20to%20a%20Data%20Source%20%3F" data-a2a-url="https://javapan.com/how-to-read-oracle-aq-using-camel-route-and-save-it-to-a-data-source/" data-a2a-title="How to read Oracle AQ using Camel Route and Save it to a Data Source ?"></a></p><p>The post <a href="https://javapan.com/how-to-read-oracle-aq-using-camel-route-and-save-it-to-a-data-source/">How to read Oracle AQ using Camel Route and Save it to a Data Source ?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://javapan.com/how-to-read-oracle-aq-using-camel-route-and-save-it-to-a-data-source/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>How to setup IBM MQ and Active Mq Connection (Including Alias Queue) the simplest way Archives - JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</title>
+	<atom:link href="https://javapan.com/tag/how-to-setup-ibm-mq-and-active-mq-connection-including-alias-queue-the-simplest-way/feed/" rel="self" type="application/rss+xml" />
+	<link>https://javapan.com/tag/how-to-setup-ibm-mq-and-active-mq-connection-including-alias-queue-the-simplest-way/</link>
+	<description>Solving Technology Challenges</description>
+	<lastBuildDate>Sat, 10 Feb 2024 16:38:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.6.2</generator>
+	<item>
+		<title>How to setup IBM MQ and Active Mq Connection (Including Alias Queue) the simplest way, using Spring Boot ?</title>
+		<link>https://javapan.com/how-to-setup-ibm-mq-and-active-mq-connection-including-alias-queue-the-simplest-way-using-spring-boot/</link>
+					<comments>https://javapan.com/how-to-setup-ibm-mq-and-active-mq-connection-including-alias-queue-the-simplest-way-using-spring-boot/#respond</comments>
+		
+		<dc:creator><![CDATA[Bishow Pandey]]></dc:creator>
+		<pubDate>Thu, 15 Jun 2023 14:10:22 +0000</pubDate>
+				<category><![CDATA[How to setup IBM MQ and Active Mq Connection (Including Alias Queue) the simplest way]]></category>
+		<category><![CDATA[using Spring Boot ?]]></category>
+		<guid isPermaLink="false">https://javapan.com/?p=117</guid>
+
+					<description><![CDATA[<p>Here is a simple and short example on how you can setup the Connection Factory for different types of Broker. Also it contains the code logic if you need to use the ActiveMq Backoff Startegy.// This simple connection factory will handle both the IBM MQ Queues as well as Active MQ queues along with Alias [&#8230;]</p>
+<p>The post <a href="https://javapan.com/how-to-setup-ibm-mq-and-active-mq-connection-including-alias-queue-the-simplest-way-using-spring-boot/">How to setup IBM MQ and Active Mq Connection (Including Alias Queue) the simplest way, using Spring Boot ?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Here is a simple and short example on how you can setup the Connection Factory for different types of Broker. Also it contains the code logic if you need to use the ActiveMq Backoff Startegy.<br>// This simple connection factory will handle both the IBM MQ Queues as well as Active MQ queues along with Alias Queue.</p>
+
+
+
+<pre class="wp-block-code has-base-color has-contrast-background-color has-text-color has-background"><code lang="java" class="language-java">
+class QueuesConnectionFactory {
+public QueuesConnectionFactory() {
+}
+public static ConnectionFactory createConnectionFactory(MqProperties yourConnectionProperties)
+throws JMSException {
+return createConnectionFactory(yourConnectionProperties, false);
+}
+//MqProperties can be some Java class that is powered by yaml using Spring Boot.
+public static ConnectionFactory createConnectionFactory(MqProperties yourConnectionProperties,
+boolean isAliasQueue)
+throws JMSException {
+ConnectionFactory connectionFactory;
+switch (yourConnectionProperties.getBrokerType()) {
+case IBM:
+MQQueueConnectionFactory mqQueueConnectionFactory = new MQQueueConnectionFactory();
+mqQueueConnectionFactory.setHostName(yourConnectionProperties.getServerHost());
+mqQueueConnectionFactory.setTransportType(yourConnectionProperties.getTransportType());
+mqQueueConnectionFactory.setChannel("MY.SOME.CHANNEL");
+mqQueueConnectionFactory.setPort(yourConnectionProperties.getServerPort());
+mqQueueConnectionFactory
+.setClientReconnectOptions(yourConnectionProperties.getClientReconnect().getValue());
+if (!isAliasQueue) {
+mqQueueConnectionFactory.setQueueManager(yourConnectionProperties.getQueueManager());
+}
+connectionFactory = mqQueueConnectionFactory;
+break;
+case ACTIVE_MQ:
+if (yourConnectionProperties.isActiveMqFailOverEnabled()) {
+connectionFactory = new ActiveMQConnectionFactory(
+yourConnectionProperties.getActiveMqFailOverUri()
++ yourConnectionProperties.getServerHost()
++ ":"
++ yourConnectionProperties.getServerPort()
++ ")?"
++ "useExponentialBackOff="
++ yourConnectionProperties.getUseExponentialBackOff()
++ "&amp;initialReconnectDelay="
++ yourConnectionProperties.getInitialReconnectDelay()
++ "&amp;startupMaxReconnectAttempts="
++ yourConnectionProperties.getStartupMaxReconnectAttempts()
++ "&amp;maxReconnectAttempts="
++ yourConnectionProperties.getMaxReconnectAttempts());
+} else {
+connectionFactory = new ActiveMQConnectionFactory("tcp://"
++ yourConnectionProperties.getServerHost()
++ ":"
++ yourConnectionProperties.getServerPort());
+}
+break;
+default:
+throw new IllegalArgumentException("Could not find the Broker Specified");
+}
+return connectionFactory;
+}
+}</code></pre>
+<p><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fjavapan.com%2Fhow-to-setup-ibm-mq-and-active-mq-connection-including-alias-queue-the-simplest-way-using-spring-boot%2F&amp;linkname=How%20to%20setup%20IBM%20MQ%20and%20Active%20Mq%20Connection%20%28Including%20Alias%20Queue%29%20the%20simplest%20way%2C%20using%20Spring%20Boot%20%3F" title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share#url=https%3A%2F%2Fjavapan.com%2Fhow-to-setup-ibm-mq-and-active-mq-connection-including-alias-queue-the-simplest-way-using-spring-boot%2F&#038;title=How%20to%20setup%20IBM%20MQ%20and%20Active%20Mq%20Connection%20%28Including%20Alias%20Queue%29%20the%20simplest%20way%2C%20using%20Spring%20Boot%20%3F" data-a2a-url="https://javapan.com/how-to-setup-ibm-mq-and-active-mq-connection-including-alias-queue-the-simplest-way-using-spring-boot/" data-a2a-title="How to setup IBM MQ and Active Mq Connection (Including Alias Queue) the simplest way, using Spring Boot ?"></a></p><p>The post <a href="https://javapan.com/how-to-setup-ibm-mq-and-active-mq-connection-including-alias-queue-the-simplest-way-using-spring-boot/">How to setup IBM MQ and Active Mq Connection (Including Alias Queue) the simplest way, using Spring Boot ?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://javapan.com/how-to-setup-ibm-mq-and-active-mq-connection-including-alias-queue-the-simplest-way-using-spring-boot/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

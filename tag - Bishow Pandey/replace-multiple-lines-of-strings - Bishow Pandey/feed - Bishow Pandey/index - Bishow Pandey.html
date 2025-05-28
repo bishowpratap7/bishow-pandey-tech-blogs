@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>replace multiple lines of strings Archives - JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</title>
+	<atom:link href="https://javapan.com/tag/replace-multiple-lines-of-strings/feed/" rel="self" type="application/rss+xml" />
+	<link>https://javapan.com/tag/replace-multiple-lines-of-strings/</link>
+	<description>Solving Technology Challenges</description>
+	<lastBuildDate>Sat, 10 Feb 2024 16:37:01 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.6.2</generator>
+	<item>
+		<title>How to replace multiple lines of strings from multiple files?</title>
+		<link>https://javapan.com/how-to-replace-multiple-lines-of-strings-from-multiple-files/</link>
+					<comments>https://javapan.com/how-to-replace-multiple-lines-of-strings-from-multiple-files/#respond</comments>
+		
+		<dc:creator><![CDATA[Bishow Pandey]]></dc:creator>
+		<pubDate>Wed, 14 Jun 2023 23:24:39 +0000</pubDate>
+				<category><![CDATA[replace multiple lines of strings]]></category>
+		<guid isPermaLink="false">https://javapan.com/?p=60</guid>
+
+					<description><![CDATA[<p>There are multiple utilities that can help with replacing strings from files. The challenge comes when we need to replace multiple lines of strings from multiple files from a folder that has special characters, new lines etc. to desired text such as empty string or some text. This example folder has multiple files with different [&#8230;]</p>
+<p>The post <a href="https://javapan.com/how-to-replace-multiple-lines-of-strings-from-multiple-files/">How to replace multiple lines of strings from multiple files?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>There are multiple utilities that can help with replacing strings from files. The challenge comes when we need to replace multiple lines of strings from multiple files from a folder that has special characters, new lines etc. to desired text such as empty string or some text.</p>
+
+
+
+<p>This example folder has multiple files with different types of text. We need to remove a bulk of text with multiple new lines from these files but keep the rest of the content intact.</p>
+
+
+
+<figure class="wp-block-image size-large is-resized"><img fetchpriority="high" decoding="async" width="1024" height="610" src="https://javapan.com/wp-content/uploads/2023/06/rsw_1280-1024x610.webp" alt="" class="wp-image-62" style="width:650px;height:387px" srcset="https://javapan.com/wp-content/uploads/2023/06/rsw_1280-1024x610.webp 1024w, https://javapan.com/wp-content/uploads/2023/06/rsw_1280-300x179.webp 300w, https://javapan.com/wp-content/uploads/2023/06/rsw_1280-768x458.webp 768w, https://javapan.com/wp-content/uploads/2023/06/rsw_1280.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Below is the code sample to achieve this.</p>
+
+
+
+<pre class="wp-block-code has-base-color has-contrast-background-color has-text-color has-background"><code lang="java" class="language-java">File dir = new File("C:\\ui_be_projects\\javapan");
+
+File[] fileList = dir.listFiles();
+for (File file : fileList) {
+
+   String fileName = file.getName();
+   Path path = Paths.get(file.getAbsolutePath());
+   //Multiple Lines of String that needs to be removed.
+   String contentToRemove = "\n" +
+           "Wayback Machine\n" +
+           "http://www.javapan.com/how-to-develop-build-deploy-and-run-your-applications-on-any-openshift-or-kubernetes-compatible-platform-using-openshift-client-aka-oc-command/\n" +
+           "4 captures\n" +
+           "23 Jan 2021 - 13 Jun 2021\n" +
+           "FEB\tJUN\tJUL\n" +
+           "Previous capture\t13\tNext capture\n" +
+           "2020\t2021\t2022\n" +
+           "  \n" +
+           " About this capture\n" +
+           "Skip to content\n" +
+           "JavaPan | Coding Resource on Java, Spring and other Newer Technologies.\n" +
+           "Recent Posts\n" +
+           "\n" +
+           "What are Routes in context of OpenShift ?\n" +
+           "What are Services in context of OpenShift ?\n" +
+           "What are Pods in context of OpenShift ?\n" +
+           "What are Deployments in context of OpenShift ?\n" +
+           "Most Used Categories\n" +
+           "Java (28)\n" +
+           "Spring (10)\n" +
+           "Spring Boot (9)\n" +
+           "Maven (5)\n" +
+           "Camel (2)\n" +
+           "Cassandra (2)\n" +
+           "Integration Test (1)\n" +
+           "Openshift (1)\n" +
+           "Couchbase (1)\n" +
+           "Neo4j (1)\n" +
+           "Welcome\n" +
+           "Welcome\n" +
+           "JavaPan | Coding Resource on Java, Spring and other Newer Technologies.\n" +
+           "\n" +
+           "Search for: \n" +
+           "Search …\n" +
+           " \n" +
+           "Menu\n" +
+           "How To\n" +
+           "Maven\n" +
+           "Simple Eclipse Code Formatter for IntelliJ IDEA IDE.\n" +
+           "How to use Maven Wrapper with Multi Module ?\n" +
+           "Spring\n" +
+           "Use the Spring JdbcTemplate’s or Spring ResultSet fetchSize to your advantage\n" +
+           "How to setup IBM MQ and Active Mq Connection (Including Alias Queue) the simplest way, using Spring Boot ?\n" +
+           "How to leverage OkHttpClient to process Request and return Response the easy way?\n" +
+           "List of Spring Bean (@Bean) related Exceptions or Errors with cause and commonly implemented solutions.\n" +
+           "Java\n" +
+           "How to use opencsv bean to write to a File ?\n" +
+           "How to use CompletableFuture Class after reading from a queue and save it into database or write to a file ?\n" +
+           "Sample Date and Time Conversion Utility Class with most of the conversions possible.\n" +
+           "Camel\n" +
+           "How to read Oracle AQ using Camel Route and Save it to a Data Source ?\n" +
+           "Cassandra\n" +
+           "How to add a simple context load test for Embedded Cassandra using Spring Boot ?\n" +
+           "Openshift\n" +
+           "Spring Boot\n" +
+           "Weblogic\n" +
+           "Couchbase\n" +
+           "Neo4j\n" +
+           "Active MQ\n" +
+           "IBM MQ\n" +
+           "Home»\n" +
+           "Java»";
+
+   LinkedList&lt;String&gt; listOfLinesToRemove = new LinkedList&lt;&gt;();
+   for (String line : contentToRemove.split("\\n")) {
+       listOfLinesToRemove.add(line.replaceAll("\\r\\n", "").replace("\r", "").replace("\n", ""));
+   }
+
+   LinkedList&lt;String&gt; readLinesAsListFromFile = new LinkedList&lt;&gt;();
+   for (String line : new String(Files.readAllBytes(path)).split("\\n")) {
+       readLinesAsListFromFile.add(line.replaceAll("\\r\\n", "").replace("\r", "").replace("\n", ""));
+   }
+
+   //Removes all of this collection's elements that are also contained in the specified collection
+   readLinesAsListFromFile.removeAll(new HashSet(listOfLinesToRemove));
+
+   //If you wish to save file as date and time. This Example does not use.
+   String fileNameWithDate = new SimpleDateFormat("yyyyMMddHHmm'.txt'").format(new Date());
+
+   FileWriter writer = new FileWriter("C:\\ui_be_projects\\javapan_replaced\\" + fileName);
+   for (String str : readLinesAsListFromFile) {
+       writer.write(str + System.lineSeparator());
+   }
+
+   writer.close();
+
+}</code></pre>
+
+
+
+<p></p>
+<p><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fjavapan.com%2Fhow-to-replace-multiple-lines-of-strings-from-multiple-files%2F&amp;linkname=How%20to%20replace%20multiple%20lines%20of%20strings%20from%20multiple%20files%3F" title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share#url=https%3A%2F%2Fjavapan.com%2Fhow-to-replace-multiple-lines-of-strings-from-multiple-files%2F&#038;title=How%20to%20replace%20multiple%20lines%20of%20strings%20from%20multiple%20files%3F" data-a2a-url="https://javapan.com/how-to-replace-multiple-lines-of-strings-from-multiple-files/" data-a2a-title="How to replace multiple lines of strings from multiple files?"></a></p><p>The post <a href="https://javapan.com/how-to-replace-multiple-lines-of-strings-from-multiple-files/">How to replace multiple lines of strings from multiple files?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://javapan.com/how-to-replace-multiple-lines-of-strings-from-multiple-files/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

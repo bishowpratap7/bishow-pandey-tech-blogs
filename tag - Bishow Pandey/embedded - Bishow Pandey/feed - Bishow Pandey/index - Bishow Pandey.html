@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Embedded Archives - JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</title>
+	<atom:link href="https://javapan.com/tag/embedded/feed/" rel="self" type="application/rss+xml" />
+	<link>https://javapan.com/tag/embedded/</link>
+	<description>Solving Technology Challenges</description>
+	<lastBuildDate>Sat, 10 Feb 2024 16:31:56 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.6.2</generator>
+	<item>
+		<title>How to add a simple context load test for Embedded Cassandra using Spring Boot ?</title>
+		<link>https://javapan.com/how-to-add-a-simple-context-load-test-for-embedded-cassandra-using-spring-boot/</link>
+					<comments>https://javapan.com/how-to-add-a-simple-context-load-test-for-embedded-cassandra-using-spring-boot/#respond</comments>
+		
+		<dc:creator><![CDATA[Bishow Pandey]]></dc:creator>
+		<pubDate>Thu, 15 Jun 2023 14:11:14 +0000</pubDate>
+				<category><![CDATA[Cassandra]]></category>
+		<category><![CDATA[Embedded]]></category>
+		<category><![CDATA[Spring Boot]]></category>
+		<guid isPermaLink="false">https://javapan.com/?p=119</guid>
+
+					<description><![CDATA[<p>This sample below shows you the code to test your embedded Cassandra to test the context load which involves testing: NOTE: This is just a context test for that particular instance being ran at that time. Passing this does not guarantee that it will behave the same in a different environments. This is just a [&#8230;]</p>
+<p>The post <a href="https://javapan.com/how-to-add-a-simple-context-load-test-for-embedded-cassandra-using-spring-boot/">How to add a simple context load test for Embedded Cassandra using Spring Boot ?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>This sample below shows you the code to test your embedded Cassandra to test the context load which involves testing:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Your Cassandra Related Dependency Beans and Listeners associated with it.</li>
+
+
+
+<li>Test Embedded Cassandra</li>
+
+
+
+<li>Test Cassandra Dataset usually loaded in .sql file.</li>
+
+
+
+<li>Test classpath, ldap and any properties needed.</li>
+</ol>
+
+
+
+<p>NOTE: This is just a context test for that particular instance being ran at that time. Passing this does not guarantee that it will behave the same in a different environments. This is just a basic level check to see if at least the coding side of things are correct.</p>
+
+
+
+<pre class="wp-block-code has-base-color has-contrast-background-color has-text-color has-background"><code lang="java" class="language-java">@RunWith(SpringRunner.class)
+@TestExecutionListeners(listeners = {
+    YourCassandraRelatedDependencyListeners.class})
+@CassandraDataSet(value = {
+    "/setup.cql"}, keyspace = "your-defined-space")
+@EmbeddedCassandra(timeout = 50000L)
+@SpringBootTest(classes = {
+    YourApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = {
+        "spring.cloud.config.label=integration-test"})
+@TestPropertySource(locations = {
+    "classpath:embeddedCassandra.properties",
+    "classpath:krypt.properties",
+    "classpath:ldap.properties"})
+@Category(value = IntegrationTest.class)
+public class YourApplicationIT
+{
+    @Test
+    public void contextLoad()
+    {
+    }
+}</code></pre>
+<p><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fjavapan.com%2Fhow-to-add-a-simple-context-load-test-for-embedded-cassandra-using-spring-boot%2F&amp;linkname=How%20to%20add%20a%20simple%20context%20load%20test%20for%20Embedded%20Cassandra%20using%20Spring%20Boot%20%3F" title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share#url=https%3A%2F%2Fjavapan.com%2Fhow-to-add-a-simple-context-load-test-for-embedded-cassandra-using-spring-boot%2F&#038;title=How%20to%20add%20a%20simple%20context%20load%20test%20for%20Embedded%20Cassandra%20using%20Spring%20Boot%20%3F" data-a2a-url="https://javapan.com/how-to-add-a-simple-context-load-test-for-embedded-cassandra-using-spring-boot/" data-a2a-title="How to add a simple context load test for Embedded Cassandra using Spring Boot ?"></a></p><p>The post <a href="https://javapan.com/how-to-add-a-simple-context-load-test-for-embedded-cassandra-using-spring-boot/">How to add a simple context load test for Embedded Cassandra using Spring Boot ?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://javapan.com/how-to-add-a-simple-context-load-test-for-embedded-cassandra-using-spring-boot/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

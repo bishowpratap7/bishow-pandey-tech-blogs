@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Simple JenkinsFile for Jenkins Pipeline. Archives - JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</title>
+	<atom:link href="https://javapan.com/tag/simple-jenkinsfile-for-jenkins-pipeline/feed/" rel="self" type="application/rss+xml" />
+	<link>https://javapan.com/tag/simple-jenkinsfile-for-jenkins-pipeline/</link>
+	<description>Solving Technology Challenges</description>
+	<lastBuildDate>Sat, 10 Feb 2024 16:39:23 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.6.2</generator>
+	<item>
+		<title>Simple JenkinsFile for Jenkins Pipeline.</title>
+		<link>https://javapan.com/simple-jenkinsfile-for-jenkins-pipeline/</link>
+					<comments>https://javapan.com/simple-jenkinsfile-for-jenkins-pipeline/#respond</comments>
+		
+		<dc:creator><![CDATA[Bishow Pandey]]></dc:creator>
+		<pubDate>Thu, 15 Jun 2023 12:06:13 +0000</pubDate>
+				<category><![CDATA[Simple JenkinsFile for Jenkins Pipeline.]]></category>
+		<guid isPermaLink="false">https://javapan.com/?p=90</guid>
+
+					<description><![CDATA[<p>Jenkins is a popular open-source automation server used for continuous integration and continuous deployment, enabling efficient software development through automated build, test, and deployment processes. This simple JenkinsFile will help you deploy your maven project easily in different environments based on master, develop, feature, hotfix or release branch or tags. You can copy this and [&#8230;]</p>
+<p>The post <a href="https://javapan.com/simple-jenkinsfile-for-jenkins-pipeline/">Simple JenkinsFile for Jenkins Pipeline.</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p><strong>Jenkins</strong> is a popular open-source automation server used for continuous integration and continuous deployment, enabling efficient software development through automated build, test, and deployment processes.</p>
+
+
+
+<p>This simple JenkinsFile will help you deploy your maven project easily in different environments based on master, develop, feature, hotfix or release branch or tags. You can copy this and customize based on your need.</p>
+
+
+
+<pre class="wp-block-code has-base-color has-contrast-background-color has-text-color has-background"><code lang="java" class="language-java">pipeline {
+agent { label 'jenkins-agent-maven-311' }</code></pre>
+
+
+
+<pre class="wp-block-code has-base-color has-contrast-background-color has-text-color has-background"><code lang="java" class="language-java">options {
+    buildDiscarder(logRotator(numToKeepStr:'10'))
+    disableConcurrentBuilds()
+}
+
+environment {
+    def APP_NAME = 'Your Project Name'
+    def EMAIL_NOTIFICATION_LIST = 'Your or team email'
+    def VERSION = readMavenPom().getVersion()
+    def RELEASE_VERSION = null
+    def BUILD_TYPE = null
+}
+
+stages {
+    stage('Build') {
+        steps {
+            echo "starting build"
+            echo "pom VERSION = ${VERSION}" //You can add branch, time it started and other too
+
+            script {
+                def isTag = sh(returnStdout: true, script: "git tag --contains | head -1").trim()
+
+                if ("${env.BRANCH_NAME}" == 'master' &amp;&amp; "${VERSION}".endsWith('-SNAPSHOT')) {
+                    RELEASE_VERSION = "${VERSION}"
+                    BUILD_TYPE = 'snapshot'
+                } else if ("${env.BRANCH_NAME}" == 'develop' &amp;&amp; "${VERSION}".endsWith('-SNAPSHOT')) {
+                    RELEASE_VERSION = "${env.BRANCH_NAME}"
+                    BUILD_TYPE = 'snapshot'
+                } else if ("${env.BRANCH_NAME}".startsWith('feature') &amp;&amp; "${VERSION}".endsWith('-SNAPSHOT')) {
+                    RELEASE_VERSION = "${env.BRANCH_NAME}"
+                    BUILD_TYPE = 'feature'
+                } else if ("${env.BRANCH_NAME}".startsWith('hotfix') &amp;&amp; "${VERSION}".endsWith('-SNAPSHOT')) {
+                    RELEASE_VERSION = "${env.BRANCH_NAME}"
+                    BUILD_TYPE = 'hotfix'
+                } else if (isTag &amp;&amp; "${env.BRANCH_NAME}".startsWith('release-') &amp;&amp; "${VERSION}".endsWith('-SNAPSHOT')) {
+                    RELEASE_VERSION = "${env.BRANCH_NAME}".replace("release-", "") + ".RELEASE"
+                    BUILD_TYPE = 'release'
+                } else if ("${env.BRANCH_NAME}".startsWith('release') &amp;&amp; "${VERSION}".endsWith('-SNAPSHOT')) {
+                    RELEASE_VERSION = "${VERSION}".replace("-SNAPSHOT", "-RC${currentBuild.number}")
+                    BUILD_TYPE = 'releasecandidate'
+                } else {
+                    error("Your Custom Error for user to see ")
+                }
+
+                sh 'mvn --version'
+                echo "release version = ${RELEASE_VERSION}"
+                sh "mvn versions:set -DnewVersion=${RELEASE_VERSION}"
+                sh "mvn clean install" // Can also use sh "mvn clean install -DskipTests" and other similar commands 
+            }
+        }
+    }
+    stage("Reports") {
+        steps {
+            junit allowEmptyResults: true, testResults: 'Your test results metrics location to save test coverage etc results'
+            jacoco()
+        }
+    }
+    stage("Archive") {
+        steps {
+            archiveArtifacts artifacts: '**/target/*.war,**/target/*.jar,**/target/*.zip', fingerprint: true, onlyIfSuccessful: true
+        }
+    }
+}
+post {
+    always {
+        deleteDir() // DO SOME CLEANUP
+    }
+    success {
+        script {
+            sendEmail("BUILD STATUS : SUCCESS", "${EMAIL_NOTIFICATION_LIST}", "${APP_NAME}")
+        }
+    }
+    failure {
+        script {
+            sendEmail("BUILD HAS FAILED", "${EMAIL_NOTIFICATION_LIST}", "${APP_NAME}")
+        }
+    }
+    unstable {
+        script {
+            sendEmail("BUILD IS NOW UNSTABLE", "${EMAIL_NOTIFICATION_LIST}", "${APP_NAME}")
+        }
+    }
+}</code></pre>
+
+
+
+<pre class="wp-block-code has-base-color has-contrast-background-color has-text-color has-background"><code lang="java" class="language-java">}
+def sendEmail(String buildStatus, String recipients, String app) {
+buildStatus = buildStatus ?: 'SUCCESSFULLY BUILT'</code></pre>
+
+
+
+<p></p>
+
+
+
+<pre class="wp-block-code has-base-color has-contrast-background-color has-text-color has-background"><code lang="java" class="language-java">def scmChanges = getScmChanges()
+echo "${scmChanges}"
+def subject = "${buildStatus}: ${app} Build: [${env.BUILD_NUMBER}]"
+def details = """&lt;p&gt;${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':&lt;/p&gt;&lt;p&gt;${scmChanges}&lt;/p&gt;"""
+
+emailext (
+    to: recipients,
+    subject: subject,
+    body: details,
+    mimeType: 'text/html'
+)</code></pre>
+
+
+
+<pre class="wp-block-code has-base-color has-contrast-background-color has-text-color has-background"><code lang="java" class="language-java">}
+@NonCPS
+def getScmChanges() {
+if (currentBuild.changeSets.isEmpty()) {
+return 'Looking for new changes if any……………………'
+}</code></pre>
+
+
+
+<pre class="wp-block-code has-base-color has-contrast-background-color has-text-color has-background"><code lang="java" class="language-java">def changeLogSets = currentBuild.changeSets
+
+def changeString = ""
+
+for (int a = 0; a &lt; changeLogSets.size(); a++) {
+    def entries = changeLogSets[a].items
+    for (int b = 0; b &lt; entries.length; b++) {
+        def entry = entries[b]
+        changeString += "[" + new Date(entry.timestamp) + "][${entry.author}][${entry.commitId}] ${entry.msg}\n"
+    }
+}
+return "Changes: found as below \n" + changeString</code></pre>
+
+
+
+<p>}<br>Note : Not all Pipelines will have these same three stages.</p>
+<p><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fjavapan.com%2Fsimple-jenkinsfile-for-jenkins-pipeline%2F&amp;linkname=Simple%20JenkinsFile%20for%20Jenkins%20Pipeline." title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share#url=https%3A%2F%2Fjavapan.com%2Fsimple-jenkinsfile-for-jenkins-pipeline%2F&#038;title=Simple%20JenkinsFile%20for%20Jenkins%20Pipeline." data-a2a-url="https://javapan.com/simple-jenkinsfile-for-jenkins-pipeline/" data-a2a-title="Simple JenkinsFile for Jenkins Pipeline."></a></p><p>The post <a href="https://javapan.com/simple-jenkinsfile-for-jenkins-pipeline/">Simple JenkinsFile for Jenkins Pipeline.</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://javapan.com/simple-jenkinsfile-for-jenkins-pipeline/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

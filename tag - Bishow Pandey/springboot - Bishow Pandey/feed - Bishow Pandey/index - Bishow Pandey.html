@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>springboot Archives - JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</title>
+	<atom:link href="https://javapan.com/tag/springboot/feed/" rel="self" type="application/rss+xml" />
+	<link>https://javapan.com/tag/springboot/</link>
+	<description>Solving Technology Challenges</description>
+	<lastBuildDate>Sat, 10 Feb 2024 16:05:16 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.6.2</generator>
+	<item>
+		<title>What are 50 things to do in pom.xml to improve performance in your SpringBoot Application?</title>
+		<link>https://javapan.com/50-things-to-do-in-pom-xml-to-improve-performance-in-your-springboot-application/</link>
+					<comments>https://javapan.com/50-things-to-do-in-pom-xml-to-improve-performance-in-your-springboot-application/#respond</comments>
+		
+		<dc:creator><![CDATA[Bishow Pandey]]></dc:creator>
+		<pubDate>Mon, 19 Jun 2023 15:27:36 +0000</pubDate>
+				<category><![CDATA[pom.xml]]></category>
+		<category><![CDATA[springboot]]></category>
+		<guid isPermaLink="false">https://javapan.com/?p=280</guid>
+
+					<description><![CDATA[<p>pom.xml is an XML file in Maven projects that defines project details, dependencies, and build configurations for managing the project&#8217;s lifecycle. Keep in mind that the specific optimizations required may vary depending on your application&#8217;s characteristics, requirements, and the underlying technologies you are using.</p>
+<p>The post <a href="https://javapan.com/50-things-to-do-in-pom-xml-to-improve-performance-in-your-springboot-application/">What are 50 things to do in pom.xml to improve performance in your SpringBoot Application?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p><code><strong>pom.xml</strong></code> is an XML file in Maven projects that defines project details, dependencies, and build configurations for managing the project&#8217;s lifecycle.</p>
+
+
+
+<p>Keep in mind that the specific optimizations required may vary depending on your application&#8217;s characteristics, requirements, and the underlying technologies you are using.</p>
+
+
+
+<ol class="wp-block-list">
+<li>Use the latest stable versions of Spring Boot and its dependencies to leverage performance improvements and bug fixes.</li>
+
+
+
+<li>Limit the number of dependencies to only those that are necessary for your application.</li>
+
+
+
+<li>Exclude unnecessary transitive dependencies to reduce the classpath size and potential conflicts.</li>
+
+
+
+<li>Optimize dependency versions by analyzing compatibility and performance aspects.</li>
+
+
+
+<li>Use a dependency management section in the <code>pom.xml</code> to manage and control versions consistently.</li>
+
+
+
+<li>Analyze and remove any unused or unnecessary dependencies from your project.</li>
+
+
+
+<li>Prefer smaller and more focused libraries or frameworks over heavyweight ones to reduce overhead.</li>
+
+
+
+<li>Configure Maven plugins to perform code optimizations, such as bytecode enhancement, obfuscation, or compression, if applicable.</li>
+
+
+
+<li>Utilize Maven profiles to separate different build configurations (e.g., development vs. production) and apply appropriate optimizations.</li>
+
+
+
+<li>Enable Maven&#8217;s incremental builds to skip recompilation of unchanged source files, improving build times.</li>
+
+
+
+<li>Configure Maven&#8217;s parallel builds to leverage multi-core processors for faster build execution.</li>
+
+
+
+<li>Use Maven&#8217;s dependency scope appropriately (e.g., compile, provided, runtime, test) to reduce unnecessary dependencies in the final artifact.</li>
+
+
+
+<li>Enable Maven&#8217;s dependency exclusions to remove unnecessary transitive dependencies from specific dependencies.</li>
+
+
+
+<li>Use Maven&#8217;s dependency tree feature to analyze the dependency graph and identify potential conflicts or duplicate dependencies.</li>
+
+
+
+<li>Configure Maven&#8217;s compiler plugin to use the appropriate Java version and enable compiler optimizations.</li>
+
+
+
+<li>Enable Maven&#8217;s dependency analysis plugin to detect unused dependencies or identify potential conflicts.</li>
+
+
+
+<li>Use Maven&#8217;s shade plugin or Spring Boot&#8217;s Uber JAR packaging to create a single, optimized JAR file with all dependencies.</li>
+
+
+
+<li>Configure Maven&#8217;s resource filtering to replace placeholders dynamically during the build, avoiding runtime processing.</li>
+
+
+
+<li>Apply Maven&#8217;s dependency caching to improve build performance by avoiding redundant dependency downloads.</li>
+
+
+
+<li>Configure Maven&#8217;s test execution plugin to optimize test runs, such as skipping specific tests or running tests in parallel.</li>
+
+
+
+<li>Utilize Maven&#8217;s dependency updates report to keep track of outdated dependencies and upgrade to newer versions with performance improvements.</li>
+
+
+
+<li>Use Maven&#8217;s plugin management section to centralize the configuration of commonly used plugins across multiple modules.</li>
+
+
+
+<li>Configure Maven&#8217;s repository settings to use faster mirrors or local repositories for improved dependency resolution speed.</li>
+
+
+
+<li>Use Maven&#8217;s reactor feature to build multiple modules concurrently, leveraging parallelization.</li>
+
+
+
+<li>Configure Maven&#8217;s surefire plugin to exclude unnecessary test classes or test sources during the build.</li>
+
+
+
+<li>Optimize Maven&#8217;s build lifecycle by skipping unnecessary phases (e.g., package, install) during development builds.</li>
+
+
+
+<li>Configure Maven&#8217;s release plugin to perform efficient releases with proper versioning and tagging.</li>
+
+
+
+<li>Utilize Maven&#8217;s dependency lock feature (e.g., using the maven-dependency-plugin) to ensure deterministic builds and avoid unexpected changes in dependencies.</li>
+
+
+
+<li>Enable Maven&#8217;s dependency convergence report to identify conflicts or inconsistencies in transitive dependencies.</li>
+
+
+
+<li>Use Maven&#8217;s resource filtering to externalize configuration properties and provide optimized values for different environments.</li>
+
+
+
+<li>Configure Maven&#8217;s source and target compatibility levels to match the appropriate JDK version for your application.</li>
+
+
+
+<li>Enable Maven&#8217;s bytecode enhancement plugins, such as the Spring Boot Maven Plugin, to optimize the generated bytecode.</li>
+
+
+
+<li>Apply Maven&#8217;s bytecode analysis tools (e.g., JaCoCo) to identify performance bottlenecks and areas for optimization.</li>
+
+
+
+<li>Utilize Maven&#8217;s source code analysis plugins (e.g., FindBugs, PMD, SpotBugs) to identify and fix potential performance issues or code smells.</li>
+
+
+
+<li>Configure Maven&#8217;s compiler optimization options, such as bytecode optimization level and strict null checks.</li>
+
+
+
+<li>Use Maven&#8217;s resource filtering to remove unnecessary resources or files from the final artifact.</li>
+
+
+
+<li>Enable Maven&#8217;s test coverage plugins to measure code coverage and identify areas that require optimization or additional testing.</li>
+
+
+
+<li>Utilize Maven&#8217;s dependency tree flattening techniques, such as using the flatten-maven-plugin, to simplify the dependency structure.</li>
+
+
+
+<li>Configure Maven&#8217;s dependency resolution strategy to prefer local repositories or specific artifact versions for faster resolution.</li>
+
+
+
+<li>Utilize Maven&#8217;s dependency scope wisely, ensuring that dependencies are correctly categorized based on their usage and impact on performance.</li>
+
+
+
+<li>Enable Maven&#8217;s build profile activation based on environment variables, system properties, or Maven properties to apply specific optimizations per environment.</li>
+
+
+
+<li>Use Maven&#8217;s build plugins to generate optimized resources, such as minified JavaScript or CSS files.</li>
+
+
+
+<li>Configure Maven&#8217;s JVM arguments in the <code>maven-surefire-plugin</code> and <code>maven-failsafe-plugin</code> to allocate appropriate memory and optimize test execution.</li>
+
+
+
+<li>Utilize Maven&#8217;s <code>maven-javadoc-plugin</code> to generate optimized and informative Javadocs for your project.</li>
+
+
+
+<li>Configure Maven&#8217;s <code>maven-compiler-plugin</code> to enforce specific coding standards or enable additional optimizations.</li>
+
+
+
+<li>Utilize Maven&#8217;s <code>maven-enforcer-plugin</code> to enforce consistent build configurations, such as banning certain dependencies or ensuring specific versions are used.</li>
+
+
+
+<li>Enable Maven&#8217;s <code>maven-source-plugin</code> to attach optimized source code archives to your project&#8217;s artifacts.</li>
+
+
+
+<li>Configure Maven&#8217;s <code>maven-war-plugin</code> or <code>maven-jar-plugin</code> to exclude unnecessary files or resources from the final artifact.</li>
+
+
+
+<li>Utilize Maven&#8217;s <code>maven-assembly-plugin</code> to create optimized assembly distributions with specific configurations for different environments.</li>
+
+
+
+<li>Regularly review and optimize the <code>pom.xml</code> file by removing obsolete or redundant configurations, ensuring that it remains concise and focused on your project&#8217;s requirements.</li>
+</ol>
+<p><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fjavapan.com%2F50-things-to-do-in-pom-xml-to-improve-performance-in-your-springboot-application%2F&amp;linkname=What%20are%2050%20things%20to%20do%20in%20pom.xml%20to%20improve%20performance%20in%20your%20SpringBoot%20Application%3F" title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share#url=https%3A%2F%2Fjavapan.com%2F50-things-to-do-in-pom-xml-to-improve-performance-in-your-springboot-application%2F&#038;title=What%20are%2050%20things%20to%20do%20in%20pom.xml%20to%20improve%20performance%20in%20your%20SpringBoot%20Application%3F" data-a2a-url="https://javapan.com/50-things-to-do-in-pom-xml-to-improve-performance-in-your-springboot-application/" data-a2a-title="What are 50 things to do in pom.xml to improve performance in your SpringBoot Application?"></a></p><p>The post <a href="https://javapan.com/50-things-to-do-in-pom-xml-to-improve-performance-in-your-springboot-application/">What are 50 things to do in pom.xml to improve performance in your SpringBoot Application?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://javapan.com/50-things-to-do-in-pom-xml-to-improve-performance-in-your-springboot-application/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>What are over 50 things to avoid from Tomcat layer to improve performance in SpringBoot?</title>
+		<link>https://javapan.com/over-50-things-to-avoid-from-tomcat-layer-to-improve-performance-in-springboot/</link>
+					<comments>https://javapan.com/over-50-things-to-avoid-from-tomcat-layer-to-improve-performance-in-springboot/#respond</comments>
+		
+		<dc:creator><![CDATA[Bishow Pandey]]></dc:creator>
+		<pubDate>Mon, 19 Jun 2023 15:01:59 +0000</pubDate>
+				<category><![CDATA[performance]]></category>
+		<category><![CDATA[springboot]]></category>
+		<category><![CDATA[tomcat]]></category>
+		<guid isPermaLink="false">https://javapan.com/?p=277</guid>
+
+					<description><![CDATA[<p>By following these best practices, you can effectively initialize and configure Tomcat with Spring Boot for running your application. By avoiding these performance pitfalls at the Tomcat layer, you can significantly improve the performance of your Spring Boot application. Keep in mind that the specific optimizations required may vary based on your application&#8217;s characteristics and [&#8230;]</p>
+<p>The post <a href="https://javapan.com/over-50-things-to-avoid-from-tomcat-layer-to-improve-performance-in-springboot/">What are over 50 things to avoid from Tomcat layer to improve performance in SpringBoot?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>By following these best practices, you can effectively initialize and configure Tomcat with Spring Boot for running your application.</p>
+
+
+
+<ul class="wp-block-list">
+<li>Use the Spring Boot Maven Plugin: Include the <code>spring-boot-maven-plugin</code> in your Maven <code>pom.xml</code> file to package your application as an executable JAR or WAR file. This plugin automatically sets up an embedded Tomcat server for running your Spring Boot application.</li>
+</ul>
+
+
+
+<pre class="wp-block-code"><code lang="java" class="language-java">&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;!-- Spring Boot Maven Plugin --&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;version&gt;2.5.2&lt;/version&gt;
+            &lt;executions&gt;
+                &lt;execution&gt;
+                    &lt;goals&gt;
+                        &lt;goal&gt;repackage&lt;/goal&gt;
+                    &lt;/goals&gt;
+                &lt;/execution&gt;
+            &lt;/executions&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+
+
+
+<ul class="wp-block-list">
+<li>Configure Tomcat port: By default, Spring Boot uses port 8080 for Tomcat. You can configure the port by setting the <code>server.port</code> property in your application&#8217;s <code>application.properties</code> or <code>application.yml</code> file.</li>
+</ul>
+
+
+
+<pre class="wp-block-code"><code lang="java" class="language-java">application.properties:
+Open the src/main/resources/application.properties file and add the following line:
+
+
+server.port=8080
+Replace 8080 with the desired port number.
+
+application.yml:
+Open the src/main/resources/application.yml file and add the following lines:
+
+
+server:
+  port: 8080</code></pre>
+
+
+
+<ul class="wp-block-list">
+<li>Optimize Tomcat for production: Configure Tomcat for optimal performance in production environments. Set appropriate values for connector threads, connection timeouts, and other parameters based on your application&#8217;s requirements.</li>
+</ul>
+
+
+
+<pre class="wp-block-code"><code lang="java" class="language-java">&lt;Connector compression="on" compressionMinSize="2048"
+           compressableMimeType="text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json" /&gt;
+</code></pre>
+
+
+
+<pre class="wp-block-code"><code lang="java" class="language-java">&lt;Connector ...&gt;
+    ...
+    &lt;Executor name="tomcatThreadPool" namePrefix="catalina-exec-"
+              maxThreads="500" minSpareThreads="25"/&gt;
+    &lt;Connector executor="tomcatThreadPool" ... /&gt;
+    ...
+&lt;/Connector&gt;
+</code></pre>
+
+
+
+<ul class="wp-block-list">
+<li>Use Tomcat as a dependency: Instead of using the embedded Tomcat provided by Spring Boot, you can also package your application as a WAR and deploy it to an external Tomcat server. In this case, include Tomcat as a provided dependency in your project.</li>
+</ul>
+
+
+
+<pre class="wp-block-code"><code lang="java" class="language-java">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.tomcat&lt;/groupId&gt;
+    &lt;artifactId&gt;tomcat-embed-core&lt;/artifactId&gt;
+    &lt;version&gt;9.0.50&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+
+
+<pre class="wp-block-code"><code lang="java" class="language-java">import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+public class ServletInitializer extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(YourApplication.class);
+    }
+}
+</code></pre>
+
+
+
+<ul class="wp-block-list">
+<li>Enable SSL/TLS: Secure your application by enabling SSL/TLS encryption. Configure Tomcat to use HTTPS by providing an SSL certificate and configuring the appropriate properties in your application configuration.</li>
+</ul>
+
+
+
+<pre class="wp-block-code"><code lang="java" class="language-java">import org.apache.catalina.connector.Connector;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class TomcatConfiguration {
+
+    @Bean
+    public TomcatServletWebServerFactory tomcatServletWebServerFactory() {
+        TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
+        factory.addAdditionalTomcatConnectors(createSslConnector());
+        return factory;
+    }
+
+    private Connector createSslConnector() {
+        Connector connector = new Connector();
+        connector.setPort(8443);
+        connector.setSecure(true);
+        connector.setScheme("https");
+        connector.setAttribute("keyAlias", "your_key_alias");
+        connector.setAttribute("keystorePass", "your_keystore_password");
+        connector.setAttribute("keystoreFile", "/path/to/your_keystore_file");
+        connector.setAttribute("clientAuth", "false");
+        connector.setAttribute("sslProtocol", "TLS");
+        return connector;
+    }
+}
+</code></pre>
+
+
+
+<ul class="wp-block-list">
+<li>Customize Tomcat server settings: If you need to customize Tomcat server settings, you can create a <code>TomcatServletWebServerFactory</code> bean in your Spring Boot configuration. This allows you to fine-tune Tomcat&#8217;s behavior, such as setting additional connectors, configuring HTTP/2, etc.</li>
+</ul>
+
+
+
+<pre class="wp-block-code"><code lang="java" class="language-java">import org.apache.catalina.connector.Connector;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class TomcatConfiguration {
+
+    @Bean
+    public TomcatServletWebServerFactory tomcatServletWebServerFactory() {
+        TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
+        factory.addAdditionalTomcatConnectors(createHttpConnector());
+        return factory;
+    }
+
+    private Connector createHttpConnector() {
+        Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+        // Configure the connector properties (e.g., port, max connections, etc.)
+        connector.setPort(8080);
+        // Add any additional configuration as needed
+        return connector;
+    }
+}
+</code></pre>
+
+
+
+<ul class="wp-block-list">
+<li>Externalize configuration: Externalize your configuration using environment variables, command-line arguments, or external configuration files. This allows you to modify Tomcat and Spring Boot settings without rebuilding your application.</li>
+
+
+
+<li>Implement graceful shutdown: Implement graceful shutdown of your Spring Boot application running on Tomcat. Configure the <code>spring.lifecycle.timeout-per-shutdown-phase</code> property to allow sufficient time for existing requests to complete during shutdown.</li>
+
+
+
+<li>Monitor and tune Tomcat: Monitor the performance and health of your Tomcat server using appropriate monitoring tools. Identify bottlenecks and tune Tomcat&#8217;s configuration accordingly to ensure optimal performance.</li>
+
+
+
+<li>Keep Tomcat up to date: Regularly update your Tomcat server to the latest stable version. This ensures that you have the latest bug fixes, security patches, and performance improvements.</li>
+
+
+
+<li>Avoid unnecessary session usage: Minimize the usage of HTTP sessions unless absolutely necessary. Sessions consume server resources, and excessive session usage can impact performance. Consider using stateless authentication mechanisms like JWT instead.</li>
+
+
+
+<li>Avoid excessive logging: Logging can significantly impact performance. Be cautious about the amount and level of detail in your log statements. Use logging frameworks with appropriate log levels and avoid excessive debug or trace logging in production environments.</li>
+
+
+
+<li>Avoid unnecessary JSP usage: If possible, avoid using JavaServer Pages (JSP) as they can have performance implications. Consider using more efficient templating engines like Thymeleaf or FreeMarker.</li>
+
+
+
+<li>Avoid blocking operations: Be cautious of blocking operations like long-running database queries or external API calls within request handling threads. Consider using asynchronous and non-blocking techniques to offload such operations to separate threads or use reactive frameworks like Spring WebFlux.</li>
+
+
+
+<li>Avoid excessive file uploads: If your application allows file uploads, ensure that you have appropriate size limits and validation mechanisms in place. Large file uploads can consume server resources and impact performance.</li>
+
+
+
+<li>Avoid unnecessary use of filters: Filters can add overhead to request processing. Evaluate the necessity of each filter and ensure they are only applied when required. Remove any unused or redundant filters.</li>
+
+
+
+<li>Avoid unnecessary use of interceptors: Similarly to filters, interceptors can introduce additional processing overhead. Evaluate the necessity of each interceptor and ensure they are used judiciously.</li>
+
+
+
+<li>Avoid unnecessary use of servlet listeners: Servlet listeners can have a performance impact as they are invoked for various events in the servlet lifecycle. Use them sparingly and only when necessary.</li>
+
+
+
+<li>Avoid misconfigured connection pools: If you&#8217;re using a connection pool, ensure it is properly configured with appropriate connection pool size, idle connection timeout, and validation settings. A misconfigured connection pool can result in poor performance and resource utilization.</li>
+
+
+
+<li>Avoid excessive resource loading: Be cautious about loading resources (e.g., static files, configurations) from the file system instead of using classpath resources. Loading resources from the file system can be slower and impact performance. Prefer classpath resources whenever possible.</li>
+
+
+
+<li>Avoid unnecessary session usage: Minimize the usage of HTTP sessions unless absolutely necessary. Sessions consume server resources, and excessive session usage can impact performance.</li>
+
+
+
+<li>Avoid excessive logging: Logging can significantly impact performance. Be cautious about the amount and level of detail in your log statements.</li>
+
+
+
+<li>Avoid unnecessary JSP usage: If possible, avoid using JavaServer Pages (JSP) as they can have performance implications.</li>
+
+
+
+<li>Avoid blocking operations: Be cautious of blocking operations like long-running database queries or external API calls within request handling threads. Use asynchronous and non-blocking techniques to offload such operations to separate threads.</li>
+
+
+
+<li>Avoid excessive file uploads: Ensure that you have appropriate size limits and validation mechanisms in place for file uploads.</li>
+
+
+
+<li>Avoid unnecessary use of filters: Evaluate the necessity of each filter and ensure they are only applied when required.</li>
+
+
+
+<li>Avoid unnecessary use of interceptors: Evaluate the necessity of each interceptor and use them sparingly.</li>
+
+
+
+<li>Avoid unnecessary use of servlet listeners: Use servlet listeners judiciously as they can have a performance impact.</li>
+
+
+
+<li>Avoid misconfigured connection pools: Ensure that your connection pool is properly configured with appropriate size, idle connection timeout, and validation settings.</li>
+
+
+
+<li>Avoid excessive resource loading from the file system: Prefer loading resources (e.g., static files, configurations) from the classpath instead of the file system.</li>
+
+
+
+<li>Avoid unnecessary use of context reloads: Minimize the frequency of context reloads as they can result in downtime and performance degradation.</li>
+
+
+
+<li>Avoid excessive cookie usage: Use cookies judiciously as they can increase the size of HTTP requests and responses.</li>
+
+
+
+<li>Avoid unnecessary URL rewriting: Evaluate the need for URL rewriting and use it only when necessary.</li>
+
+
+
+<li>Avoid unnecessary session replication: If you are using session replication in a clustered environment, evaluate the need for it and consider alternatives like session affinity.</li>
+
+
+
+<li>Avoid unnecessary use of blocking IO: Prefer non-blocking IO to improve the scalability and responsiveness of your application.</li>
+
+
+
+<li>Avoid excessive use of HTTP redirection: Minimize the number of HTTP redirects as they add overhead to request processing.</li>
+
+
+
+<li>Avoid unnecessary use of default error pages: Customize error pages to provide more meaningful information and avoid unnecessary processing.</li>
+
+
+
+<li>Avoid unnecessary use of compression: Evaluate the need for compression and ensure that it is configured appropriately to balance CPU usage and bandwidth savings.</li>
+
+
+
+<li>Avoid excessive use of URL rewriting: Evaluate the necessity of URL rewriting and minimize its usage if possible.</li>
+
+
+
+<li>Avoid unnecessary use of resource-consuming features: Disable any Tomcat features or modules that are not required for your application to conserve resources.</li>
+
+
+
+<li>Avoid unnecessary use of default servlet mappings: Customize servlet mappings to avoid unnecessary processing of requests.</li>
+
+
+
+<li>Avoid excessive use of wildcard mappings: Use specific servlet mappings instead of wildcards to improve request resolution efficiency.</li>
+
+
+
+<li>Avoid unnecessary use of default error handling: Customize error handling to provide more informative and efficient error responses.</li>
+
+
+
+<li>Avoid excessive use of request attributes: Minimize the usage of request attributes as they can impact performance, especially when used with filters or interceptors.</li>
+
+
+
+<li>Avoid unnecessary use of Tomcat valves: Evaluate the necessity of Tomcat valves and use them only when required.</li>
+
+
+
+<li>Avoid unnecessary use of session listeners: Use session listeners judiciously as they can introduce overhead.</li>
+
+
+
+<li>Avoid unnecessary use of Tomcat&#8217;s SSI (Server Side Includes) feature: Evaluate the need for SSI and consider alternative solutions if possible.</li>
+
+
+
+<li>Avoid excessive use of static content: Serve static content efficiently using caching mechanisms, content delivery networks (CDNs), or reverse proxies.</li>
+
+
+
+<li>Avoid unnecessary use of Tomcat&#8217;s default welcome files: Customize welcome files to avoid unnecessary processing.</li>
+
+
+
+<li>Avoid excessive use of HTTP headers: Minimize the number and size of HTTP headers to reduce network overhead.</li>
+
+
+
+<li>Avoid unnecessary use of session replication: Evaluate the need for session replication and consider alternatives like session clustering or shared session stores.</li>
+
+
+
+<li>Avoid unnecessary use of Tomcat&#8217;s request dispatcher: Minimize the usage of the request dispatcher as it involves additional processing.</li>
+
+
+
+<li>Avoid unnecessary use of Tomcat&#8217;s virtual hosts: Evaluate the need for virtual hosts and use them judiciously.</li>
+
+
+
+<li>Avoid excessive use of session attributes: Minimize the usage of session attributes as they can consume memory and impact performance.</li>
+
+
+
+<li>Avoid unnecessary use of Tomcat&#8217;s access logs: Evaluate the necessity of access logs and disable them if not required.</li>
+
+
+
+<li>Avoid excessive use of Tomcat&#8217;s cache-related headers: Use cache-related headers appropriately to balance caching and freshness of resources.</li>
+
+
+
+<li>Avoid unnecessary use of Tomcat&#8217;s SSL renegotiation: Evaluate the need for SSL renegotiation and disable it if not required.</li>
+
+
+
+<li>Avoid excessive use of Tomcat&#8217;s memory settings: Tune Tomcat&#8217;s memory settings appropriately based on your application&#8217;s requirements and resource availability.</li>
+
+
+
+<li>Avoid unnecessary use of Tomcat&#8217;s default servlet: Customize the default servlet to handle requests efficiently.</li>
+
+
+
+<li>Avoid excessive use of Tomcat&#8217;s default thread pool: Configure the Tomcat thread pool size appropriately to handle the expected workload.</li>
+
+
+
+<li>Avoid unnecessary use of Tomcat&#8217;s resource caching: Evaluate the need for resource caching and use it judiciously.</li>
+
+
+
+<li>Avoid excessive use of Tomcat&#8217;s default session timeout: Configure the session timeout appropriately based on your application&#8217;s requirements.</li>
+
+
+
+<li>Avoid unnecessary use of Tomcat&#8217;s compression settings: Configure compression settings appropriately to balance performance and resource usage.</li>
+
+
+
+<li>Avoid excessive use of Tomcat&#8217;s default MIME mappings: Customize MIME mappings to avoid unnecessary processing.</li>
+
+
+
+<li>Avoid unnecessary use of Tomcat&#8217;s default character encoding: Configure the character encoding appropriately based on your application&#8217;s requirements.</li>
+
+
+
+<li>Avoid excessive use of Tomcat&#8217;s default request parsing settings: Configure request parsing settings appropriately to handle the expected request sizes and payloads.</li>
+</ul>
+
+
+
+<pre class="wp-block-code"><code lang="java" class="language-java">import org.apache.catalina.connector.Connector;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class TomcatConfiguration {
+
+    @Bean
+    public TomcatServletWebServerFactory tomcatServletWebServerFactory() {
+        TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
+        factory.addConnectorCustomizers(this::customizeConnector);
+        return factory;
+    }
+
+    private void customizeConnector(Connector connector) {
+        connector.setParseBodyMethods("POST,PUT"); // Limit parsing to specific HTTP methods
+        connector.setMaxPostSize(1048576); // Set maximum request body size (in bytes)
+        connector.setMaxSwallowSize(1048576); // Set maximum size of swallowed request body (in bytes)
+        // Add any additional customizations as needed
+    }
+}
+</code></pre>
+
+
+
+<ul class="wp-block-list">
+<li>Avoid unnecessary use of Tomcat&#8217;s default response buffering: Customize response buffering settings to avoid unnecessary memory usage.</li>
+</ul>
+
+
+
+<pre class="wp-block-code"><code lang="java" class="language-java">import org.apache.catalina.connector.Connector;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class TomcatConfiguration {
+
+    @Bean
+    public TomcatServletWebServerFactory tomcatServletWebServerFactory() {
+        TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
+        factory.addConnectorCustomizers(this::customizeConnector);
+        return factory;
+    }
+
+    private void customizeConnector(Connector connector) {
+        connector.setAllowChunking(false); // Disable chunked transfer encoding
+        connector.setBufferRequestBody(false); // Disable request body buffering
+        // Add any additional customizations as needed
+    }
+}
+</code></pre>
+
+
+
+<ul class="wp-block-list">
+<li>Avoid excessive use of Tomcat&#8217;s default thread stack size: Configure the thread stack size appropriately based on your application&#8217;s requirements.</li>
+</ul>
+
+
+
+<pre class="wp-block-code"><code lang="java" class="language-java">import org.apache.catalina.connector.Connector;
+import org.apache.coyote.http11.Http11NioProtocol;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class TomcatConfiguration {
+
+    @Bean
+    public TomcatServletWebServerFactory tomcatServletWebServerFactory() {
+        TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
+        factory.addConnectorCustomizers(connector -&gt; customizeConnector(connector));
+        return factory;
+    }
+
+    private void customizeConnector(Connector connector) {
+        Http11NioProtocol protocol = (Http11NioProtocol) connector.getProtocolHandler();
+        protocol.setThreadStackSize(256); // Set the desired stack size in kilobytes
+    }
+}
+</code></pre>
+
+
+
+<ul class="wp-block-list">
+<li>Avoid unnecessary use of Tomcat&#8217;s default request size limits: Configure request size limits appropriately based on your application&#8217;s requirements.</li>
+
+
+
+<li>Avoid excessive use of Tomcat&#8217;s default connection timeout: Configure connection timeout appropriately based on your application&#8217;s requirements.</li>
+</ul>
+
+
+
+<p>By avoiding these performance pitfalls at the Tomcat layer, you can significantly improve the performance of your Spring Boot application. Keep in mind that the specific optimizations required may vary based on your application&#8217;s characteristics and requirements.</p>
+<p><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fjavapan.com%2Fover-50-things-to-avoid-from-tomcat-layer-to-improve-performance-in-springboot%2F&amp;linkname=What%20are%20over%2050%20things%20to%20avoid%20from%20Tomcat%20layer%20to%20improve%20performance%20in%20SpringBoot%3F" title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share#url=https%3A%2F%2Fjavapan.com%2Fover-50-things-to-avoid-from-tomcat-layer-to-improve-performance-in-springboot%2F&#038;title=What%20are%20over%2050%20things%20to%20avoid%20from%20Tomcat%20layer%20to%20improve%20performance%20in%20SpringBoot%3F" data-a2a-url="https://javapan.com/over-50-things-to-avoid-from-tomcat-layer-to-improve-performance-in-springboot/" data-a2a-title="What are over 50 things to avoid from Tomcat layer to improve performance in SpringBoot?"></a></p><p>The post <a href="https://javapan.com/over-50-things-to-avoid-from-tomcat-layer-to-improve-performance-in-springboot/">What are over 50 things to avoid from Tomcat layer to improve performance in SpringBoot?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://javapan.com/over-50-things-to-avoid-from-tomcat-layer-to-improve-performance-in-springboot/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

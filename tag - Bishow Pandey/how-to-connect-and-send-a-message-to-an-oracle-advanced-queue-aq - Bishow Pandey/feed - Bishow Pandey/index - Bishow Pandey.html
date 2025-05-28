@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>How to connect and send a message to an Oracle Advanced Queue (AQ) ? Archives - JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</title>
+	<atom:link href="https://javapan.com/tag/how-to-connect-and-send-a-message-to-an-oracle-advanced-queue-aq/feed/" rel="self" type="application/rss+xml" />
+	<link>https://javapan.com/tag/how-to-connect-and-send-a-message-to-an-oracle-advanced-queue-aq/</link>
+	<description>Solving Technology Challenges</description>
+	<lastBuildDate>Sat, 10 Feb 2024 16:38:39 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.6.2</generator>
+	<item>
+		<title>How to connect and send a message to an Oracle Advanced Queue (AQ) ?</title>
+		<link>https://javapan.com/how-to-connect-and-send-a-message-to-an-oracle-advanced-queue-aq/</link>
+					<comments>https://javapan.com/how-to-connect-and-send-a-message-to-an-oracle-advanced-queue-aq/#respond</comments>
+		
+		<dc:creator><![CDATA[Bishow Pandey]]></dc:creator>
+		<pubDate>Thu, 15 Jun 2023 12:12:04 +0000</pubDate>
+				<category><![CDATA[How to connect and send a message to an Oracle Advanced Queue (AQ) ?]]></category>
+		<guid isPermaLink="false">https://javapan.com/?p=99</guid>
+
+					<description><![CDATA[<p>Most of us are quite familiar with simple JDBC connection that has to do with reading and writing from a table. Most of us usually don’t have a need to send or read from an Advanced Queue that is solely from Oracle but when needed this seems to be such a hassle when not equipped [&#8230;]</p>
+<p>The post <a href="https://javapan.com/how-to-connect-and-send-a-message-to-an-oracle-advanced-queue-aq/">How to connect and send a message to an Oracle Advanced Queue (AQ) ?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Most of us are quite familiar with simple JDBC connection that has to do with reading and writing from a table. Most of us usually don’t have a need to send or read from an Advanced Queue that is solely from Oracle but when needed this seems to be such a hassle when not equipped with correct resource.<br>Here I have shown the simplest and easiest way to connect to an AQ (Oracle Advanced Queue) just using ConnectionFactory and JmsTemplate using Spring Boot App.</p>
+
+
+
+<pre class="wp-block-code has-base-color has-contrast-background-color has-text-color has-background"><code lang="java" class="language-java">import oracle.jms.AQjmsFactory;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.core.JmsTemplate;
+import javax.jms.ConnectionFactory;
+import javax.jms.JMSException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+@Configuration
+@EnableJms
+public class OracleAdvancedQueueConfig {
+public void testOracleAdvancedQueueConnection() throws SQLException, JMSException {
+//Same concept applies if using Oracle Exadata
+String dbURL = "jdbc:oracle:thin:username/password@ora-demo.my.test.com:1521:w23";
+Connection conn = DriverManager.getConnection(dbURL);
+ConnectionFactory connectionFactory = AQjmsFactory.getQueueConnectionFactory(dbURL,
+conn.getClientInfo());
+JmsTemplate jmsTemplate = new JmsTemplate();
+jmsTemplate.setSessionTransacted(true);
+jmsTemplate.setConnectionFactory(connectionFactory);
+//Your Oracle Advanced Queue name.
+jmsTemplate.setDefaultDestinationName("MY_SCHEMA.TO_MY_QUEUE_NAME");
+jmsTemplate.convertAndSend("Learn Java");
+}
+}</code></pre>
+
+
+
+<p></p>
+
+
+
+<p><br>Now if you go into that schema and into that queue table you should see the message sent.<br>Note: Make sure to use this dependency as this also seems to be a common miss from developers.<br>com.oracle.jdbc ojdbc8 12.2.0.1<br>com.oracle aqapi 12.1.0.2.0<br>Other dependencies should be pretty straight forward.<br>Hope this will helps you and save some time.</p>
+<p><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fjavapan.com%2Fhow-to-connect-and-send-a-message-to-an-oracle-advanced-queue-aq%2F&amp;linkname=How%20to%20connect%20and%20send%20a%20message%20to%20an%20Oracle%20Advanced%20Queue%20%28AQ%29%20%3F" title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share#url=https%3A%2F%2Fjavapan.com%2Fhow-to-connect-and-send-a-message-to-an-oracle-advanced-queue-aq%2F&#038;title=How%20to%20connect%20and%20send%20a%20message%20to%20an%20Oracle%20Advanced%20Queue%20%28AQ%29%20%3F" data-a2a-url="https://javapan.com/how-to-connect-and-send-a-message-to-an-oracle-advanced-queue-aq/" data-a2a-title="How to connect and send a message to an Oracle Advanced Queue (AQ) ?"></a></p><p>The post <a href="https://javapan.com/how-to-connect-and-send-a-message-to-an-oracle-advanced-queue-aq/">How to connect and send a message to an Oracle Advanced Queue (AQ) ?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://javapan.com/how-to-connect-and-send-a-message-to-an-oracle-advanced-queue-aq/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

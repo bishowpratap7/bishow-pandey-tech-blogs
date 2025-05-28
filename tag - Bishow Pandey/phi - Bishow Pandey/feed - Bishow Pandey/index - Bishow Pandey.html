@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>phi Archives - JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</title>
+	<atom:link href="https://javapan.com/tag/phi/feed/" rel="self" type="application/rss+xml" />
+	<link>https://javapan.com/tag/phi/</link>
+	<description>Solving Technology Challenges</description>
+	<lastBuildDate>Sat, 10 Feb 2024 16:02:35 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.6.2</generator>
+	<item>
+		<title>How to encrypt PHI or PII   or PCI data on Response Body from HandlerInterceptor in SpringBoot ?</title>
+		<link>https://javapan.com/how-to-encrypt-phi-or-pii-data-on-response-body-from-handlerinterceptor-in-springboot/</link>
+					<comments>https://javapan.com/how-to-encrypt-phi-or-pii-data-on-response-body-from-handlerinterceptor-in-springboot/#respond</comments>
+		
+		<dc:creator><![CDATA[Bishow Pandey]]></dc:creator>
+		<pubDate>Thu, 22 Jun 2023 20:26:04 +0000</pubDate>
+				<category><![CDATA[interceptor]]></category>
+		<category><![CDATA[phi]]></category>
+		<category><![CDATA[pii]]></category>
+		<guid isPermaLink="false">https://javapan.com/?p=302</guid>
+
+					<description><![CDATA[<p>HandlerInterceptor gets called before the appropriate HandlerAdapter triggers the execution of the handler itself. This mechanism can be used for a large field of preprocessing aspects, e.g. for authorization checks, or common handler behavior like locale or theme changes. Its main purpose is to allow for factoring out repetitive handler code. There are many ways [&#8230;]</p>
+<p>The post <a href="https://javapan.com/how-to-encrypt-phi-or-pii-data-on-response-body-from-handlerinterceptor-in-springboot/">How to encrypt PHI or PII   or PCI data on Response Body from HandlerInterceptor in SpringBoot ?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p><strong>HandlerInterceptor</strong> gets called before the appropriate HandlerAdapter triggers the execution of the handler itself. This mechanism can be used for a large field of preprocessing aspects, e.g. for authorization checks, or common handler behavior like locale or theme changes. Its main purpose is to allow for factoring out repetitive handler code.</p>
+
+
+
+<p>There are many ways to encrypt PHI or PII or PCI data but one of the easiest and global way to do is on postHandle method from HandlerInterceptor which only changes the part of the response body. </p>
+
+
+
+<p>This is less invasive as we are only doing it on the response body without changing the whole codebase or at JPAs entity level. If client needs the decrypted PHI or PII data, they can be provided with the decrypt key separately. Then client can view that PHI or PII data securely on their end. Find below the code snippets to help you achieve this.</p>
+
+
+
+<pre class="wp-block-code"><code lang="java" class="language-java">    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+                           ModelAndView modelAndView) throws NoSuchFieldException, IllegalAccessException, IOException {
+
+        //Using Reflect Utils to find the JSON based on content Field of ContentCachingResponseWrapper class.
+        Field privateField = ContentCachingResponseWrapper.class.getDeclaredField("content");
+        privateField.setAccessible(true);
+
+        //Using ContentCachingResponseWrapper that caches all content written to the output stream and writer, and allows this content to be retrieved via a byte array.
+        ContentCachingResponseWrapper contentCachingResponseWrapper = (ContentCachingResponseWrapper) response;
+
+        //Returns the value of the field represented by this Field, on the contentCachingResponseWrapper object.
+        FastByteArrayOutputStream fastByteArrayOutputStream = (FastByteArrayOutputStream) privateField.get(contentCachingResponseWrapper);
+        InputStream inputStream = fastByteArrayOutputStream.getInputStream();
+
+        //Get Original Response from buffered stream
+        String originalJsonResponse = StringUtils.EMPTY;
+
+        try {  //Best to use try with resource
+            originalJsonResponse = new BufferedReader(
+                    new InputStreamReader(inputStream, StandardCharsets.UTF_8))
+                    .lines()
+                    .collect(Collectors.joining("\n"));
+
+        } catch (Exception e) {
+            //Do your thingy.
+        } finally {
+            if (fastByteArrayOutputStream != null) {
+                fastByteArrayOutputStream.close();
+
+            }
+
+            if (inputStream != null) {
+                inputStream.close();
+
+            }
+
+        }
+
+
+        //Now check the key of the original JSON for any PII
+        if (originalJsonResponse.contains("some_PII_data_key")) {
+
+            //ObjectMapper provides functionality for reading and writing JSON.
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+            List&lt;Map&lt;String, Object&gt;&gt; mapList = mapper.readValue(originalJsonResponse, new TypeReference&lt;&gt;() {
+            });
+
+
+            // Create a new LinkedHashMap to actually check for key and update its value
+            List&lt;LinkedHashMap&lt;String, Object&gt;&gt; listOfLinkedHashMap = new ArrayList&lt;&gt;();
+
+            mapList.forEach(stringObjectMap -&gt; listOfLinkedHashMap.add((LinkedHashMap) stringObjectMap));
+
+            listOfLinkedHashMap.forEach(linkedHashMap -&gt; listOfLinkedHashMap.forEach(stringObjectLinkedHashMap -&gt; stringObjectLinkedHashMap.entrySet().forEach(stringObjectEntry -&gt; {
+
+                //Just an example here.If key is dob or any PII update it based on your need.
+                if (stringObjectEntry.getKey().equals("dob")) {
+                    //Do your thing. Mask it, Encrypt it, null it etc.
+                    stringObjectEntry.setValue("MASKED");
+                }
+
+            })));
+
+            //Clears any data that exists in the buffer as well as the status code and headers. If the response has been committed, this method throws an IllegalStateException.
+            response.reset();
+
+            //Now save the updated JSON into the response writer.
+            response.getWriter().write(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(listOfLinkedHashMap));
+        }
+
+    }</code></pre>
+
+
+
+<p></p>
+<p><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fjavapan.com%2Fhow-to-encrypt-phi-or-pii-data-on-response-body-from-handlerinterceptor-in-springboot%2F&amp;linkname=How%20to%20encrypt%20PHI%20or%20PII%20%20%20or%20PCI%20data%20on%20Response%20Body%20from%20HandlerInterceptor%20in%20SpringBoot%20%3F" title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share#url=https%3A%2F%2Fjavapan.com%2Fhow-to-encrypt-phi-or-pii-data-on-response-body-from-handlerinterceptor-in-springboot%2F&#038;title=How%20to%20encrypt%20PHI%20or%20PII%20%20%20or%20PCI%20data%20on%20Response%20Body%20from%20HandlerInterceptor%20in%20SpringBoot%20%3F" data-a2a-url="https://javapan.com/how-to-encrypt-phi-or-pii-data-on-response-body-from-handlerinterceptor-in-springboot/" data-a2a-title="How to encrypt PHI or PII   or PCI data on Response Body from HandlerInterceptor in SpringBoot ?"></a></p><p>The post <a href="https://javapan.com/how-to-encrypt-phi-or-pii-data-on-response-body-from-handlerinterceptor-in-springboot/">How to encrypt PHI or PII   or PCI data on Response Body from HandlerInterceptor in SpringBoot ?</a> appeared first on <a href="https://javapan.com">JAVAPAN - Unlock Your Brilliance, Share Your Knowledge! 🚀 Post Your Articles For Free.</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://javapan.com/how-to-encrypt-phi-or-pii-data-on-response-body-from-handlerinterceptor-in-springboot/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,21 @@
+/* Bishow Pandey Tech Blog — readability layer (injected 2026-11-03) */
+body{font-family:Georgia,'Times New Roman',serif !important;background:#f7f5ef !important;color:#1c2733 !important;line-height:1.75 !important;font-size:18px}
+img{max-width:100% !important;height:auto}
+pre,code{font-family:Consolas,Menlo,monospace}
+pre{background:#0b1220 !important;color:#d6e4f0 !important;padding:14px;border-radius:8px;overflow-x:auto;font-size:.86rem;line-height:1.5}
+code{background:#e9e4d8;padding:1px 5px;border-radius:4px;font-size:.9em}
+pre code{background:transparent;padding:0}
+table{display:block;overflow-x:auto;border-collapse:collapse}
+td,th{border:1px solid #c9c2b2;padding:6px 10px}
+#secondary,.widget-area,.sidebar,.site-sidebar,#sidebar{display:none !important}
+.site-content,.content-area,#content,#main,.entry-content,article,.post{max-width:840px;margin-left:auto !important;margin-right:auto !important}
+.bp-bar{position:sticky;top:0;z-index:999;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 16px;background:#08101f;border-bottom:2px solid #d4af37;font-family:Arial,sans-serif;font-size:.92rem}
+.bp-bar a{color:#7cc4ff;text-decoration:none;font-weight:700}
+.bp-bar .who{color:#fff}
+.bp-bar .who b{color:#d4af37}
+.bp-bar .cta a{margin-left:8px;padding:5px 11px;border-radius:999px;color:#fff;background:#000;border:1px solid #555}
+.bp-bar .cta a.in{background:#0a66c2;border-color:#0a66c2}
+.bp-hero{max-width:840px;margin:18px auto 4px;padding:0 12px}
+.bp-hero img{width:100%;border-radius:12px;display:block}
+.bp-foot{max-width:840px;margin:34px auto 40px;padding:18px 12px;border-top:2px solid #d4af37;font-family:Arial,sans-serif;font-size:.9rem;color:#43536a;text-align:center}
+.bp-foot a{color:#0a58ca}

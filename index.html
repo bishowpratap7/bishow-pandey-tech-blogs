@@ -72,6 +72,7 @@
   <p class="topics"><a href="#openshift">☸️ OpenShift & Cloud Platforms</a> · <a href="#spring">🌱 Spring Boot & Java How-Tos</a> · <a href="#security">🔐 Security & Identity</a> · <a href="#messaging">🔌 Messaging & Integration</a> · <a href="#performance">⚡ Performance, Comparisons & Big Lists</a></p>
 </div>
 <main>
+<div class="searchrow"><input id="q" type="search" placeholder="🔍 Search 40 articles — try \'openshift\', \'jwt\', \'performance\'…" aria-label="Search articles"></div>
 <section id="openshift"><h2>☸️ OpenShift & Cloud Platforms <span class="count">8 articles</span></h2><p class="blurb">OpenShift and Kubernetes explained from the ground up — pods, routes, services, deployments — plus platform comparisons.</p><div class="grid"><a class="card" href="bishow-pandey-tech-blogs-master/how-to-setup-openshift-in-my-local-machine%20-%20Bishow%20Pandey/index%20-%20Bishow%20Pandey.html"><img src="assets/covers/cover-openshift.jpg" alt="How to setup OpenShift in your local Machine?" loading="lazy"><div class="cb"><h3>How to setup OpenShift in your local Machine?</h3><p>“We all love to read the documentation, Nah just kidding .‿ No worries, I did go through the openshift documentation (which is not user friendly) and hopefully I have made things easier for you on how…</p><span class="meta">☸️ OpenShift & Cloud Platforms · 4 min read</span></div></a>
 <a class="card" href="bishow-pandey-tech-blogs-master/openshift-for-absolute-beginners%20-%20Bishow%20Pandey/index%20-%20Bishow%20Pandey.html"><img src="assets/covers/cover-openshift.jpg" alt="OpenShift for Absolute Beginners" loading="lazy"><div class="cb"><h3>OpenShift for Absolute Beginners</h3><p>OpenShift is a cloud development Platform as a Service (PaaS) which was assembled around a core of docker container packaging and Kubernetes container along with cluster management. This is powered by…</p><span class="meta">☸️ OpenShift & Cloud Platforms · 4 min read</span></div></a>
 <a class="card" href="bishow-pandey-tech-blogs-master/what-are-deployments-in-context-of-openshift%20-%20Bishow%20Pandey/index%20-%20Bishow%20Pandey.html"><img src="assets/covers/cover-openshift.jpg" alt="What are Deployments in context of OpenShift ?" loading="lazy"><div class="cb"><h3>What are Deployments in context of OpenShift ?</h3><p>Often time we see or hear that it is deployment time and we are going to deploy our code in DEV or TEST or PRODUCTION environments. This applies to all sorts of platform, since we are talking about Op…</p><span class="meta">☸️ OpenShift & Cloud Platforms · 6 min read</span></div></a>
@@ -121,5 +122,20 @@
   <p><strong>Bishow Pandey Tech Blog</strong> — part of Bishow's desk network: <a href="https://bishowpratap7.github.io/thedevdesk/">The Dev Desk</a> · <a href="https://bishowpratap7.github.io/scrollpatrol/">Scroll Patrol</a> · <a href="https://bishowpratap7.github.io/theworlddesk/">The World Desk</a> · <a href="https://bishowpratap7.github.io/thestockdesk/">The Stock Desk</a> · <a href="https://bishowpratap7.github.io/theshoppingdesk/">The Shopping Desk</a> · <a href="https://bishowpratap7.github.io/thecozydesk/">The Cozy Desk</a> · <a href="https://bishowpratap7.github.io/thefoodiedesk/">The Foodie Desk</a> · <a href="https://bishowpratap7.github.io/thestyledesk/">The Style Desk</a> · <a href="https://bishowpratap7.github.io/museumofoutages/">Museum of Outages</a> · <a href="https://bishowpratap7.github.io/thecvedesk/">The CVE Desk</a></p>
   <p>© Bishow Pandey · <a href="https://x.com/bishowppandey">X @bishowppandey</a> · <a href="https://www.linkedin.com/in/bishowpandey">LinkedIn</a> · <a href="https://github.com/bishowpratap7">GitHub</a></p>
 </footer>
+<script>
+var q=document.getElementById('q');
+q.addEventListener('input',function(){
+  var term=q.value.trim().toLowerCase();
+  document.querySelectorAll('main section').forEach(function(sec){
+    if(sec.id==='about')return;
+    var visible=0;
+    sec.querySelectorAll('.card').forEach(function(c){
+      var hit=!term||c.textContent.toLowerCase().indexOf(term)>-1;
+      c.style.display=hit?'':'none'; if(hit)visible++;
+    });
+    sec.style.display=visible?'':'none';
+  });
+});
+</script>
 </body>
 </html>

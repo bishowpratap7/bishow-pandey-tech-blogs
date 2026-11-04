@@ -26,3 +26,7 @@ h2 .count{font-size:.8rem;color:#8fa3bb;font-family:Arial,sans-serif;font-weight
 footer{border-top:1px solid #233250;margin-top:44px;padding:22px 18px 34px;text-align:center;color:#8fa3bb;font-size:.9rem;font-family:Arial,sans-serif}
 footer a{color:#7cc4ff}
 @media(max-width:640px){.hero h1{font-size:1.5rem}.bar{flex-wrap:wrap}}
+
+.searchrow{max-width:1020px;margin:22px auto 0;padding:0 18px}
+.searchrow input{width:100%;padding:13px 18px;border-radius:999px;border:1px solid #233250;background:#0e1830;color:#e6edf3;font-size:1rem;font-family:Arial,sans-serif;outline:none}
+.searchrow input:focus{border-color:#d4af37}
